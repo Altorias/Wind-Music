@@ -13,6 +13,11 @@ axios.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded
 const service = axios.create({
     baseURL: config.baseApi
 })
+
+export function getBaseURL() {
+    return service.defaults.baseURL;
+}
+
 // 在请求之前做一些事情
 service.interceptors.request.use((req) => {
     // 自定义header
@@ -24,15 +29,12 @@ service.interceptors.request.use((req) => {
 service.interceptors.response.use((res) => {
     // status是为了照顾js
     if (res.status === 200) {
-        if (res.data.code === 400){
+        if (res.data.code === 400) {
             ElMessage.error(res.data.message || NETWORK_ERROR)
-        }
-        else{
+        } else {
             return res.data
         }
-    }
-
-    else {
+    } else {
         //网络请求错误
         ElMessage.error(res.data.message || NETWORK_ERROR)
         // @ts-ignore
@@ -60,7 +62,6 @@ function request(options) {
     } else {
         service.defaults.baseURL = isMock ? config.mockApi : config.baseApi
     }
-    console.log(service.defaults.baseURL)
 
     return service(options)
 }

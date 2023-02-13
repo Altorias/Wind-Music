@@ -6,6 +6,14 @@ import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 
 export default defineConfig({
+  devServer: {
+    port: 5173,
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8080/'
+      }
+    }
+  },
   // ...
   plugins: [ vue(),
     // ...

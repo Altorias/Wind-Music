@@ -41,7 +41,7 @@ export default defineComponent({
           if (res.success) {
             handleRouter(RouterName.Info, {path: RouterName.Info})
           }
-        }else{
+        } else {
           ElMessage({
             showClose: true,
             message: "请输入正确的内容",
@@ -62,7 +62,7 @@ export default defineComponent({
 
 
 <style lang="less" scoped>
-.login-bg{
+.login-bg {
   position: relative;
   background: url("../assets/images/background.png") fixed center;
   background-size: cover;
@@ -70,7 +70,7 @@ export default defineComponent({
   height: 100%;
 }
 
-.login-title{
+.login-title {
   font-family: "Lucida Calligraphy", cursive, serif, sans-serif;
   position: absolute;
   top: 50%;

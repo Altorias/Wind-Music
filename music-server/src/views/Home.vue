@@ -1,8 +1,8 @@
 <template>
   <div class="common-layout">
-    <el-container>
+    <el-container class="lay-container">
       <common-aside></common-aside>
-      <el-container>
+      <el-container class="main-container">
         <common-header :userName="userName"></common-header>
         <el-main>
           <router-view/>
@@ -32,8 +32,19 @@ export default {
 
 <style lang="less" scoped>
 .el-container {
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: flex-start;
+  height: 100%;
+
+  .main-container {
+    flex-wrap: wrap;
+    height: 100%;
+    padding: 0;
+
+    .el-main {
+      margin-top: -8rem;
+    }
+  }
 }
 
 .common-layout {

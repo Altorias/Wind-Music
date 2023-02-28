@@ -16,15 +16,15 @@ public class ArtistController {
         this.artistService = artistService;
     }
 
-    @GetMapping("/artist/getArtistList")
-    public ReturnMessage getArtistList() {
-        return artistService.getArtistList();
+    @GetMapping("/artist/getAllArtist")
+    public ReturnMessage getAllArtist() {
+        return artistService.getAllArtist();
     }
 
 
-    @PostMapping("/artist/addArtist")
-    public ReturnMessage addArtist(@Validated ArtistRequest artistRequest){
-        return artistService.addArtist(artistRequest);
+    @PostMapping("/artist/insertArtist")
+    public ReturnMessage insertArtist(@Validated ArtistRequest artistRequest){
+        return artistService.insertArtist(artistRequest);
     }
 
     @PostMapping("/artist/updateArtist")

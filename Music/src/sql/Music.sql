@@ -35,8 +35,8 @@ create table banner
         primary key (id)
 );
 
--- 创建song表
-create table song
+-- 创建music表
+create table music
 (
     id          int(25) auto_increment,
     name        varchar(25)  not null,
@@ -46,12 +46,34 @@ create table song
     pic         varchar(100) null,
     url         varchar(100) null,
     artist_id   int(25)   not null,
-    constraint song_pk
+    lyrics      text      null,
+    constraint music_pk
         primary key (id),
-    constraint song_artist_null_fk
-        foreign key (artist_id) references music.artist (id)
+    constraint music_artist_null_fk
+        foreign key (artist_id) references artist (id)
             on update set default on delete cascade
 );
+
+-- 创建歌单表
+create table play_list
+(
+    id           int(9) auto_increment,
+    title        varchar(255) not null,
+    pic          varchar(255) null,
+    introduction text         null,
+    tag          varchar(50)  null,
+    constraint play_list_pk
+        primary key (id),
+    constraint play_list_pk
+        unique (title)
+);
+
+-- 创建Music视图
+create view v_music as
+select mu.*, ar.name as artist_name
+from music.music mu
+         left join music.artist ar on mu.artist_id = ar.id;
+
 
 
 

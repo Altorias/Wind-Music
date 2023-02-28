@@ -1,25 +1,22 @@
 package com.music.gu.model.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-
 import java.io.Serializable;
 import java.util.Date;
-
 import lombok.Data;
 
 /**
- * @TableName song
+ *
+ * @TableName v_music
  */
-@TableName(value = "song")
+@TableName(value ="v_music")
 @Data
-public class Song implements Serializable {
+public class VMusic implements Serializable {
     /**
      *
      */
-    @TableId(value = "id", type = IdType.AUTO)
+    @TableField(value = "id")
     private Integer id;
 
     /**
@@ -64,6 +61,18 @@ public class Song implements Serializable {
     @TableField(value = "artist_id")
     private Integer artistId;
 
+    /**
+     *
+     */
+    @TableField(value = "lyrics")
+    private String lyrics;
+
+    /**
+     *
+     */
+    @TableField(value = "artist_name")
+    private String artistName;
+
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
 
@@ -78,15 +87,17 @@ public class Song implements Serializable {
         if (getClass() != that.getClass()) {
             return false;
         }
-        Song other = (Song) that;
+        VMusic other = (VMusic) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
-                && (this.getName() == null ? other.getName() == null : this.getName().equals(other.getName()))
-                && (this.getAlbum() == null ? other.getAlbum() == null : this.getAlbum().equals(other.getAlbum()))
-                && (this.getCreateTime() == null ? other.getCreateTime() == null : this.getCreateTime().equals(other.getCreateTime()))
-                && (this.getUpdateTime() == null ? other.getUpdateTime() == null : this.getUpdateTime().equals(other.getUpdateTime()))
-                && (this.getPic() == null ? other.getPic() == null : this.getPic().equals(other.getPic()))
-                && (this.getUrl() == null ? other.getUrl() == null : this.getUrl().equals(other.getUrl()))
-                && (this.getArtistId() == null ? other.getArtistId() == null : this.getArtistId().equals(other.getArtistId()));
+            && (this.getName() == null ? other.getName() == null : this.getName().equals(other.getName()))
+            && (this.getAlbum() == null ? other.getAlbum() == null : this.getAlbum().equals(other.getAlbum()))
+            && (this.getCreateTime() == null ? other.getCreateTime() == null : this.getCreateTime().equals(other.getCreateTime()))
+            && (this.getUpdateTime() == null ? other.getUpdateTime() == null : this.getUpdateTime().equals(other.getUpdateTime()))
+            && (this.getPic() == null ? other.getPic() == null : this.getPic().equals(other.getPic()))
+            && (this.getUrl() == null ? other.getUrl() == null : this.getUrl().equals(other.getUrl()))
+            && (this.getArtistId() == null ? other.getArtistId() == null : this.getArtistId().equals(other.getArtistId()))
+            && (this.getLyrics() == null ? other.getLyrics() == null : this.getLyrics().equals(other.getLyrics()))
+            && (this.getArtistName() == null ? other.getArtistName() == null : this.getArtistName().equals(other.getArtistName()));
     }
 
     @Override
@@ -101,6 +112,8 @@ public class Song implements Serializable {
         result = prime * result + ((getPic() == null) ? 0 : getPic().hashCode());
         result = prime * result + ((getUrl() == null) ? 0 : getUrl().hashCode());
         result = prime * result + ((getArtistId() == null) ? 0 : getArtistId().hashCode());
+        result = prime * result + ((getLyrics() == null) ? 0 : getLyrics().hashCode());
+        result = prime * result + ((getArtistName() == null) ? 0 : getArtistName().hashCode());
         return result;
     }
 
@@ -118,6 +131,8 @@ public class Song implements Serializable {
         sb.append(", pic=").append(pic);
         sb.append(", url=").append(url);
         sb.append(", artist_id=").append(artistId);
+        sb.append(", lyrics=").append(lyrics);
+        sb.append(", artist_name=").append(artistName);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

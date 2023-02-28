@@ -10,12 +10,12 @@
     </div>
     <div class="table">
       <el-table :data="displayData">
-        <el-table-column type="selection" width="50" align="center"></el-table-column>
+<!--        <el-table-column type="selection" width="50" align="center"></el-table-column>-->
         <el-table-column label="序号" type="index" width="100" align="center"/>
         <el-table-column label="歌手图片" prop="pic" width="150" align="center">
           <template v-slot="scope">
             <div class="singer-img">
-              <img :src="handleStaticImage(scope.row.pic)" style="width: 100%"/>
+              <img :src="handleStaticResources(scope.row.pic)" style="width: 100%"/>
             </div>
             <el-upload :action="uploadUrl(scope.row.id)" :show-file-list="false" :on-success="handleImgSuccess"
                        :before-upload="checkUploadImg">
@@ -129,7 +129,7 @@ import {getBaseURL} from "../../api/request";
 export default defineComponent({
   setup() {
     const {proxy} = getCurrentInstance();
-    const {handleGender, handleDate, handleStaticImage, checkUploadImg} = utils()
+    const {handleGender, handleDate, handleStaticResources, checkUploadImg} = utils()
 
     const tableData = ref([]); // 记录歌曲，用于显示
     const tempDate = ref([]); // 记录歌曲，用于搜索时能临时记录一份歌曲列表
@@ -171,7 +171,7 @@ export default defineComponent({
     async function getArtistData() {
       tableData.value = [];
       tempDate.value = [];
-      const result = await proxy.$api.getArtistList()
+      const result = await proxy.$api.getAllArtist()
       tableData.value = result.data;
       tempDate.value = result.data;
       currentPage.value = 1;
@@ -241,7 +241,7 @@ export default defineComponent({
           }
 
           if (action.value === "add") {
-            let res = await proxy.$api.addArtist(formArtist)
+            let res = await proxy.$api.insertArtist(formArtist)
             if (res) {
               proxy.$refs.artistForm.resetFields();
               dialogVisible.value = false
@@ -287,7 +287,7 @@ export default defineComponent({
     return {
       tableData,
       searchWord,
-      handleStaticImage,
+      handleStaticResources,
       handleImgSuccess,
       checkUploadImg,
       handleGender,

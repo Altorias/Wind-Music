@@ -19,12 +19,12 @@ public interface ArtistService extends IService<Artist> {
      *
      * @return
      */
-    ReturnMessage getArtistList();
+    ReturnMessage getAllArtist();
 
     /**
      * 添加艺术家
      */
-    ReturnMessage addArtist(ArtistRequest artistRequest);
+    ReturnMessage insertArtist(ArtistRequest artistRequest);
 
     /**
      * 修改艺术家

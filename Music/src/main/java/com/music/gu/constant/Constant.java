@@ -10,11 +10,25 @@ public class Constant {
     // 项目路径
     public static String PROJECT_PATH = System.getProperty("user.dir");
 
-    // 歌手路径
-    public static String ARTIST_IMAGE_PATH = "file:" + PROJECT_PATH + "/static/image/artist/";
+    // 歌手图片路径
+    public static String ARTIST_IMAGE_PATH = PROJECT_PATH + "/static/image/artist/";
+
+    // 歌曲图片路径
+    public static String MUSIC_IMAGE_PATH = PROJECT_PATH + "/static/image/music/";
+
+    // 歌曲路径
+    public static String MUSIC_PATH = PROJECT_PATH + "/static/music/";
+
+
 
     // 佚名歌手图片
     public static String ANONYMOUS_ARTIST_IMAGE_PATH = "static/image/artist/anonymous.jpg";
+
+    // 默认歌曲路径
+    public static String DEFAULT_MUSIC_PATH = "static/music/BadApple.mp3";
+
+    // 默认歌曲图片路径
+    public static String DEFAULT_MUSIC_IMAGE_PATH = "static/image/music/default.jpg";
 
 
 }

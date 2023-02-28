@@ -45,7 +45,7 @@ export default function () {
 
         return add(year) + "-" + add(month) + "-" + add(date)
     }
-    const handleStaticImage = (url) => {
+    const handleStaticResources = (url) => {
         return `${getBaseURL()}${url}`
     }
     const checkUploadImg = (file) => {
@@ -62,7 +62,7 @@ export default function () {
 
         return isExistFileType && isLt2M;
     }
-    const checkUploadSong = (file) => {
+    const checkUploadMusic = (file) => {
         const ltCode = 10;
         const isLt10M = file.size / 1024 / 1024 < ltCode;
         const testmsg = file.name.substring(file.name.lastIndexOf(".") + 1);
@@ -80,12 +80,30 @@ export default function () {
 
         return extension && isLt10M;
     }
+    const handleLyric = (text) => {
+        const lines = text.split("\n");
+        const pattern = /\[\d{2}:\d{2}.(\d{3}|\d{2})\]/g;
+        const result = [];
+
+        // 对于歌词格式不对的特殊处理
+        if (!/\[.+\]/.test(text)) {
+            return [text];
+        }
+        for (const item of lines) {
+            if (pattern.test(item)) {
+                const value = item.replace(pattern, ""); // 存歌词
+                result.push(value);
+            }
+        }
+        return result;
+    }
 
     return{
         handleRouter,
         handleGender,
         handleDate,
-        handleStaticImage,
-        checkUploadImg
+        handleStaticResources,
+        checkUploadImg,
+        handleLyric,
     }
 }

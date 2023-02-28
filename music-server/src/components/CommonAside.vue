@@ -12,7 +12,7 @@
         <el-icon><pie-chart /></el-icon>
         <span>系统首页</span>
       </el-menu-item>
-      <el-menu-item index="song">
+      <el-menu-item index="music">
         <el-icon><mic /></el-icon>
         <span>歌曲管理</span>
       </el-menu-item>

@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.music.gu.mapper.SongMapper">
+<mapper namespace="com.music.gu.mapper.MusicMapper">
 
-    <resultMap id="BaseResultMap" type="com.music.gu.model.entity.Song">
+    <resultMap id="BaseResultMap" type="com.music.gu.model.entity.Music">
             <id property="id" column="id" jdbcType="INTEGER"/>
             <result property="name" column="name" jdbcType="VARCHAR"/>
             <result property="album" column="album" jdbcType="VARCHAR"/>
@@ -13,11 +13,12 @@
             <result property="pic" column="pic" jdbcType="VARCHAR"/>
             <result property="url" column="url" jdbcType="VARCHAR"/>
             <result property="artistId" column="artist_id" jdbcType="INTEGER"/>
+            <result property="lyrics" column="lyrics" jdbcType="VARCHAR"/>
     </resultMap>
 
     <sql id="Base_Column_List">
         id,name,album,
         create_time,update_time,pic,
-        url,artist_id
+        url,artist_id,lyrics
     </sql>
 </mapper>

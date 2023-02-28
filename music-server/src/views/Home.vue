@@ -10,16 +10,19 @@
       </el-container>
     </el-container>
   </div>
+  <music-play></music-play>
 </template>
 
 <script>
 import CommonHeader from "../components/CommonHeader.vue";
 import CommonAside from "../components/CommonAside.vue";
+import MusicPlay from "../components/MusicPlay.vue";
 
 export default {
   components: {
     CommonHeader,
-    CommonAside
+    CommonAside,
+    MusicPlay
   },
   setup() {
     const userName = "admin"

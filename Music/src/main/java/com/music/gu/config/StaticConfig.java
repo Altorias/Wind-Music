@@ -10,8 +10,15 @@ public class StaticConfig implements WebMvcConfigurer {
     // 静态资源拦截器
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        // 歌手图片
         registry.addResourceHandler("/static/image/artist/**")
-                .addResourceLocations(Constant.ARTIST_IMAGE_PATH);
+                .addResourceLocations("file:" + Constant.ARTIST_IMAGE_PATH);
+        // 歌曲图片
+        registry.addResourceHandler("/static/image/music/**")
+                .addResourceLocations("file:" + Constant.MUSIC_IMAGE_PATH);
+        // 歌曲
+        registry.addResourceHandler("/static/music/**")
+                .addResourceLocations("file:" + Constant.MUSIC_PATH);
 //        registry.addResourceHandler("/img/singerPic/**")
 //                .addResourceLocations(Constants.SINGER_PIC_PATH);
 //        registry.addResourceHandler("/img/songPic/**")

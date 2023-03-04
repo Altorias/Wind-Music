@@ -78,4 +78,69 @@ export default {
             data: params
         })
     },
+    // 获取所有歌单
+    getAllMusicList: () => {
+        return request({
+            url: '/musicList/getAllMusicList',
+            method: 'get',
+        })
+    },
+    // 添加歌单
+    insertMusicList: (params) => {
+        return request({
+            url: '/musicList/insertMusicList',
+            method: 'post',
+            data: params
+        })
+    },
+    // 修改歌单信息
+    updateMusicListInfo: (params) => {
+        return request({
+            url: '/musicList/updateMusicListInfo',
+            method: 'post',
+            data: params
+        })
+    },
+    // 删除歌单
+    deleteMusicList: (params) => {
+        return request({
+            url: '/musicList/deleteMusicList',
+            method: 'get',
+            data: params
+        })
+    },
+    // 获取歌单中的歌曲
+    selectMusicByListId: (params) => {
+        return request({
+            url: '/musicListDetail/selectMusicByListId',
+            method: 'get',
+            data: params
+        })
+    },
+    // 从歌单中删除歌曲
+    deleteMusicFromList: (params) => {
+        return request({
+            url: '/musicListDetail/deleteMusicFromList',
+            method: 'get',
+            data: params
+        })
+    },
+    // 将歌曲添加到歌单中
+    insertMusicToList: (params) => {
+        return request({
+            url: '/musicListDetail/insertMusicToList',
+            method: 'post',
+            data: params
+        })
+    },
+    // 选择不在歌单中的歌曲
+    getMusicNotInList: (params) => {
+        return request({
+            url: '/musicListDetail/getMusicNotInList',
+            method: 'get',
+            data: params
+        })
+    },
+
+
 }

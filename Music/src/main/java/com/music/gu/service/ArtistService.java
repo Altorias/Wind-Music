@@ -39,7 +39,6 @@ public interface ArtistService extends IService<Artist> {
 
     /**
      * 删除艺术家
-     * todo
      * 删除时要将其歌曲变成默认值
      */
     ReturnMessage deleteArtist(Integer id);

@@ -17,4 +17,6 @@ public interface VMusicService extends IService<VMusic> {
      */
     ReturnMessage getAllMusic();
 
+
+
 }

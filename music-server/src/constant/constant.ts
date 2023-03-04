@@ -5,6 +5,10 @@ export const APP_NAME = "Wind Music";
 export const enum RouterName {
     Home = "/home",
     Info = "/info",
+    Artist = "/artist",
+    Music = "/music",
+    MusicList = "/musicList",
+    MusicListDetail = "/musicListDetail",
     Error = "/404",
     SignIn = "/",
     SignOut = "0",

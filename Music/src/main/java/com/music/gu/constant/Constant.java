@@ -19,6 +19,10 @@ public class Constant {
     // 歌曲路径
     public static String MUSIC_PATH = PROJECT_PATH + "/static/music/";
 
+    // 歌单图片路径
+    public static String MUSIC_LIST_IMAGE_PATH = PROJECT_PATH + "/static/image/musicList/";
+
+
 
 
     // 佚名歌手图片
@@ -29,6 +33,10 @@ public class Constant {
 
     // 默认歌曲图片路径
     public static String DEFAULT_MUSIC_IMAGE_PATH = "static/image/music/default.jpg";
+
+    // 默认歌单图片路径
+    public static String DEFAULT_MUSIC_LIST_IMAGE_PATH = "static/image/music/default.jpg";
+
 
 
 }

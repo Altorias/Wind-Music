@@ -15,10 +15,16 @@ export default function () {
 
     function handleRouter(routerName: string | number, options: routerOptions) {
         switch (routerName) {
+            case RouterName.MusicListDetail:
+                proxy.$router.push({ path: options.path, query: options.query });
+                break;
             case RouterName.Home:
             case RouterName.Error:
             case RouterName.SignIn:
             case RouterName.SignOut:
+            case RouterName.Artist:
+            case RouterName.Music:
+            case RouterName.MusicList:
             default:
                 proxy.$router.push({path: options.path});
                 break;

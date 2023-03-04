@@ -24,6 +24,7 @@ public class ReturnMessage {
         returnMessage.setMessage(message);
         returnMessage.setSuccess(true);
         returnMessage.setData(null);
+        returnMessage.setType("success");
         return returnMessage;
     }
 
@@ -36,6 +37,7 @@ public class ReturnMessage {
     public static ReturnMessage success(String message, Object data){
         ReturnMessage returnMessage = success(message);
         returnMessage.setData(data);
+        returnMessage.setType("success");
         return returnMessage;
     }
 

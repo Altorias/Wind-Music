@@ -20,7 +20,7 @@
         <el-icon><mic /></el-icon>
         <span>歌手管理</span>
       </el-menu-item>
-      <el-menu-item index="playList">
+      <el-menu-item index="musicList">
         <el-icon><Document /></el-icon>
         <span>歌单管理</span>
       </el-menu-item>

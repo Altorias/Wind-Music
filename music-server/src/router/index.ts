@@ -30,8 +30,18 @@ const routes: Array<RouterRecordRaw> = [
             {
                 path: '/Artist',
                 component: () => import('../views/homePage/ArtistPage.vue'),
-                meta: { title: 'Singer' }
+                meta: { title: 'Artist' }
             },
+            {
+                path: '/MusicList',
+                component: () => import('../views/homePage/MusicListPage.vue'),
+                meta: { title: 'MusicList' }
+            },
+            {
+                path: '/MusicListDetail',
+                component: () => import('../views/detailPage/MusicListDetail.vue'),
+                meta: { title: 'MusicListDetail' }
+            }
         ]
     }
 ]

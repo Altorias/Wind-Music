@@ -1,20 +1,27 @@
 package com.music.gu.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.music.gu.common.ReturnMessage;
 import com.music.gu.mapper.MusicListMapper;
+import com.music.gu.mapper.MusicListRelationMapper;
 import com.music.gu.model.entity.Artist;
 import com.music.gu.model.entity.MusicList;
+import com.music.gu.model.entity.MusicListRelation;
 import com.music.gu.model.request.ArtistRequest;
 import com.music.gu.model.request.MusicListRequest;
 import com.music.gu.service.MusicListService;
+import com.mysql.cj.Session;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import static com.music.gu.constant.Constant.DEFAULT_MUSIC_LIST_IMAGE_PATH;
 import static com.music.gu.constant.Constant.MUSIC_LIST_IMAGE_PATH;
@@ -29,9 +36,11 @@ public class MusicListServiceImpl extends ServiceImpl<MusicListMapper, MusicList
     implements MusicListService {
 
     private final MusicListMapper musicListMapper;
+    private final MusicListRelationMapper musicListRelationMapper;
 
-    public MusicListServiceImpl(MusicListMapper musicListMapper) {
+    public MusicListServiceImpl(MusicListMapper musicListMapper, MusicListRelationMapper musicListRelationMapper) {
         this.musicListMapper = musicListMapper;
+        this.musicListRelationMapper = musicListRelationMapper;
     }
 
 
@@ -95,11 +104,23 @@ public class MusicListServiceImpl extends ServiceImpl<MusicListMapper, MusicList
 
     @Override
     public ReturnMessage deleteMusicList(Integer id) {
-        if (musicListMapper.deleteById(id) > 0) {
-            return ReturnMessage.success("删除成功");
-        } else {
+        QueryWrapper<MusicListRelation> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("music_list_id", id);
+        List<MusicListRelation> musicListRelationList = musicListRelationMapper.selectList(queryWrapper);
+        try{
+            if (! CollectionUtils.isEmpty(musicListRelationList)) {
+                List<Integer> idList = musicListRelationList.stream()
+                        .map(MusicListRelation::getMusicListId).collect(Collectors.toList());
+                musicListRelationMapper.deleteBatchIds(idList);
+            }
+            if (musicListMapper.deleteById(id) > 0) {
+                return ReturnMessage.success("删除成功");
+            }
+        } catch (Exception e){
+            log.error(e.getMessage());
             return ReturnMessage.error("删除失败");
         }
+        return ReturnMessage.error("删除失败");
     }
 }
 

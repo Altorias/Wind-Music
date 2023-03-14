@@ -3,10 +3,12 @@ package com.music.gu.controller;
 import com.music.gu.common.ReturnMessage;
 import com.music.gu.model.request.AdminRequest;
 import com.music.gu.service.AdminService;
+import com.music.gu.utils.WebLog;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpSession;
+
 
 @RestController
 public class AdminController {
@@ -19,6 +21,7 @@ public class AdminController {
 
 
     @PostMapping("/admin/login")
+    @WebLog()
     public ReturnMessage getLoginStatus(AdminRequest adminRequest, HttpSession session) {
         return adminService.getLoginStatus(adminRequest, session);
     }
